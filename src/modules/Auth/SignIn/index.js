@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const SignIn = props => {};
+const SignIn = props => {
+  return <></>;
+};
 
 SignIn.propTypes = {
   name: PropTypes.string
