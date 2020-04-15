@@ -1,6 +1,6 @@
 import React from "react";
 import * as Sentry from "@sentry/browser";
-import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import { CLIENT_ROUTES } from "./routes";
 
@@ -12,8 +12,13 @@ function App() {
     <>
       <Router>
         <Switch>
-          {CLIENT_ROUTES.map(({ path, component, exact }) => (
-            <Route exact={exact} path={path} component={component} key={path} />
+          {CLIENT_ROUTES.map(({ route, component, exact }) => (
+            <Route
+              exact={exact}
+              path={route}
+              component={component}
+              key={route}
+            />
           ))}
         </Switch>
       </Router>

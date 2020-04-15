@@ -1,10 +1,17 @@
+import client from "Api.service";
 class UserService {
   constructor() {}
 
-  getUser = () => {};
+  getUser = () => {
+    client["rest-auth/user/"]["rest-auth_user_read"]();
+  };
 
-  changeUser = () => {};
+  updateUserFields = () => {
+    client["rest-auth/user/"]["rest-auth_user_update"]({});
+  };
 
-  addUser = () => {};
+  addUserFields = () => {
+    client["rest-auth/user/"]["rest-auth_user_partial_update"]({});
+  };
 }
 export default new UserService();
