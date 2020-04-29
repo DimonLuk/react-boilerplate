@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "Proxima Nova Bold";
+  src: url("../fonts/proxima_ssv/Proxima Nova Bold.otf");
+  font-weight: bolder;
+}
+@font-face {
+  font-family: "Gotham Thin";
+  src: url("../fonts/Gotham-Font/Gotham-Thin.otf");
+  font-weight: bolder;
+}
+@font-face {
+  font-family: "Gotham Medium";
+  src: url("../fonts/Gotham-Font/GothamMedium.ttf");
+  font-weight: bolder;
+}
+@font-face {
+  font-family: "Gotham Bold";
+  src: url("../fonts/Gotham-Font/Gotham-Bold.otf");
+  font-weight: bolder;
+}
+
+.MuiTypography-h3 {
+  font-family: "Gotham Bold" !important;
+}
+.MuiTypography-h4 {
+  font-family: "Gotham Bold" !important;
+}

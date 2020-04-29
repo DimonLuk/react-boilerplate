@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
 }
@@ -35,4 +38,15 @@
   to {
     transform: rotate(360deg);
   }
+}
+@font-face {
+  font-family: "Gotham Bold";
+  src: url("/src/assets/fonts/Gotham-Font/Gotham-Bold.otf");
+  font-weight: bolder;
+}
+
+@font-face {
+  font-family: "Proxima Nova Bold";
+  src: url("/src/assets/fonts/proxima_ssv/Proxima Nova Bold.otf");
+  font-weight: bolder;
 }
