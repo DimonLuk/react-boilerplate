@@ -1,17 +1,20 @@
-import client from "Api.service";
 class UserService {
-  constructor() {}
-
   getUser = () => {
-    client["rest-auth/user/"]["rest-auth_user_read"]();
+    return window.client.apis["rest-auth/user/"]["rest-auth_user_read"]();
   };
 
   updateUserFields = () => {
-    client["rest-auth/user/"]["rest-auth_user_update"]({});
+    return window.client.apis["rest-auth/user/"]["rest-auth_user_update"]({});
   };
 
   addUserFields = () => {
-    client["rest-auth/user/"]["rest-auth_user_partial_update"]({});
+    return window.client.apis["rest-auth/user/"][
+      "rest-auth_user_partial_update"
+    ]({});
+  };
+
+  getWallet = () => {
+    return window.client.apis["app"]["app_wallet_list"]();
   };
 }
 export default new UserService();

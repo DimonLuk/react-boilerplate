@@ -1,42 +1,67 @@
-import client from "./Api.service";
+import UserService from "./User.service";
 
 class AuthService {
   register = (userData) => {
-    client["rest-auth/registration/"]["rest-auth_registration_create"](
-      userData
-    );
+    return window.client.apis["rest-auth"]
+      ["rest_auth_registration_create"]({
+        data: userData,
+      })
+      .then((loginResponse) => {
+        window.client.authorizations.Bearer = `Bearer ${loginResponse.body.token}`;
+        localStorage.DEEMA_TOKEN = loginResponse.body.token;
+        return UserService.getWallet().then((walletResponse) => {
+          return { ...walletResponse.body, ...loginResponse.body };
+        });
+      });
   };
 
   verifyEmail = (keyData) => {
-    client["rest-auth/registration/verify-email/"][
-      "rest-auth_registration_verify-email_create"
+    return window.client.apis["rest-auth"][
+      "rest_auth_registration_verify-email_create"
     ](keyData);
   };
 
   login = (userData) => {
-    client["rest-auth/login/"]["rest-auth_login_create"](userData);
+    return window.client.apis["rest-auth"]
+      ["rest_auth_login_create"]({
+        data: userData,
+      })
+
+      .then((loginResponse) => {
+        window.client.authorizations.Bearer = `Bearer ${loginResponse.body.token}`;
+        localStorage.DEEMA_TOKEN = loginResponse.body.token;
+        return UserService.getWallet().then((walletResponse) => {
+          return { ...walletResponse.body, ...loginResponse.body };
+        });
+      });
   };
 
   logout = () => {
-    client["rest-auth/login/"]["rest-auth_logout_list"]();
+    return window.client.apis["rest-auth"]
+      ["rest_auth_logout_create"]()
+      .finally(() => {
+        window.client.authorizations = {};
+        localStorage.removeItem("DEEMA_TOKEN");
+        localStorage.removeItem("user");
+      });
   };
 
   changePassword = (passwordsData) => {
-    client["rest-auth/password/change/"]["rest-auth_password_change_create"](
-      passwordsData
-    );
+    return window.client.apis["rest-auth/password/change/"][
+      "rest-auth_password_change_create"
+    ](passwordsData);
   };
 
   resetPassword = (emailData) => {
-    client["rest-auth/password/reset/"]["rest-auth_password_reset_create"](
-      emailData
-    );
+    return window.client.apis["rest-auth"]["rest_auth_password_reset_create"]({
+      data: emailData,
+    });
   };
 
   confirmReset = (confirmResetData) => {
-    client["rest-auth/password/reset/confirm/"][
+    return window.client.apis["rest-auth/password/reset/confirm/"][
       "rest-auth_password_reset_confirm_create"
-    ]({ ...confirmResetData, token: localStorage.token });
+    ]({ ...confirmResetData });
   };
 }
-export default AuthService;
+export default new AuthService();

@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+a:visited {
+  color: black;
+}
 .App {
   text-align: center;
 }
@@ -49,4 +52,47 @@
   font-family: "Proxima Nova Bold";
   src: url("/src/assets/fonts/proxima_ssv/Proxima Nova Bold.otf");
   font-weight: bolder;
+}
+
+.hpc-underlined {
+  display: inline-block;
+  position: relative;
+  line-height: 1;
+  white-space: nowrap;
+}
+.hpc-underlined .hpc-underlined__text {
+  position: relative;
+}
+
+.hpc-underlined::before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 0.333em;
+  right: -0.1em;
+  bottom: 0;
+  left: -0.1em;
+  background-color: #fdde00;
+  animation-delay: 0.3s;
+  animation-duration: 0.5s;
+  animation-name: grow;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.hpc-underlined--yellow::before {
+  background-color: #fdde00;
+}
+::selection {
+  color: black;
+  background-color: #fdde00;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }

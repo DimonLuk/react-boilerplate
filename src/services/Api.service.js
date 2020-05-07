@@ -1,6 +1,17 @@
 import Swagger from "swagger-client";
 
-const init = async () => {
-  return await Swagger(process.env.REACT_APP_SWAGGER_URL).apis;
-};
-export default init();
+class ApiService {
+  init() {
+    return Swagger(process.env.REACT_APP_SWAGGER_URL, {
+      authorizations: {
+        Bearer: localStorage.DEEMA_TOKEN
+          ? `Bearer ${localStorage.DEEMA_TOKEN}`
+          : undefined,
+      },
+    }).then((value) => {
+      window.client = value;
+    });
+  }
+}
+
+export default ApiService;

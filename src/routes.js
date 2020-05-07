@@ -1,15 +1,14 @@
 import SignIn from "./modules/Auth/SignIn";
-import SignUp from "./modules/Auth/SignUp";
 import Register from "./modules/Auth/Register";
-import ForgotPassword from "./modules/Auth/ForgotPassword";
+import Catalog from "./modules/Catalog/Catalog";
 
-const REST_AUTH = `/rest-auth`;
-const PASSWORD = `/password`;
-const RESET = `/reset`;
-const REGISTRATION = `/registration`;
-const LOGIN = `/login`;
-const LOGOUT = "/logout";
-const FORGOT_PASSWORD = "/forgotpassword";
+export const REST_AUTH = `/rest-auth`;
+export const PASSWORD = `/password`;
+export const RESET = `/reset`;
+export const REGISTRATION = `/registration`;
+export const LOGIN = `/login`;
+export const LOGOUT = "/logout";
+export const CATALOG = "/catalog";
 
 export const CLIENT_ROUTES = [
   {
@@ -18,18 +17,19 @@ export const CLIENT_ROUTES = [
     exact: true,
   },
   {
-    route: LOGOUT,
-    component: SignUp,
-    exact: true,
-  },
-  {
     route: REGISTRATION,
     component: Register,
     exact: true,
   },
+
   {
-    route: FORGOT_PASSWORD,
-    component: ForgotPassword,
+    route: CATALOG,
+    component: Catalog,
     exact: true,
+  },
+
+  {
+    route: "/",
+    component: SignIn,
   },
 ];

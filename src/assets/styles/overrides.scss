@@ -9,6 +9,11 @@
   font-weight: bolder;
 }
 @font-face {
+  font-family: "Gotham Light";
+  src: url("../fonts/Gotham-Font/Gotham-Light.otf");
+  font-weight: bolder;
+}
+@font-face {
   font-family: "Gotham Medium";
   src: url("../fonts/Gotham-Font/GothamMedium.ttf");
   font-weight: bolder;
@@ -18,10 +23,90 @@
   src: url("../fonts/Gotham-Font/Gotham-Bold.otf");
   font-weight: bolder;
 }
-
+.MuiTypography-h2 {
+  font-family: "Gotham Bold" !important;
+}
 .MuiTypography-h3 {
   font-family: "Gotham Bold" !important;
 }
 .MuiTypography-h4 {
   font-family: "Gotham Bold" !important;
+}
+.MuiTypography-h5 {
+  font-family: "Gotham Bold" !important;
+}
+.MuiTypography-body1 {
+  font-family: "Gotham Light" !important;
+}
+.MuiTypography-body2 {
+  font-family: "Gotham Medium" !important;
+  font-size: 1rem !important;
+}
+.slim-h5 {
+  font-family: "Gotham Light" !important;
+  font-size: 1.4rem !important;
+}
+.MuiInputBase-root {
+  font-family: "Gotham Bold" !important;
+}
+.MuiFormControl-root {
+  font-family: "Gotham Bold" !important;
+}
+.MuiButton-root {
+  font-family: "Gotham Bold" !important;
+}
+.MuiLinearProgress-colorPrimary {
+  color: "red";
+  fill: "red";
+  background-color: #fdde00;
+}
+
+.MuiChip-label {
+  font-family: "Gotham Light" !important;
+}
+.MuiDialog-paperWidthSm {
+  max-width: 800px !important;
+}
+.MuiLinearProgress-barColorPrimary {
+  background-color: #fdde00 !important;
+}
+.MuiAlert-filledError {
+  background-color: #ff110080 !important;
+}
+.MuiPickersToolbar-toolbar {
+  background-color: #fdde00 !important;
+}
+.MuiPickersDay-daySelected {
+  background-color: #fdde00 !important;
+}
+.MuiPickerDTTabs-tabs {
+  background-color: #fdde00 !important;
+}
+.MuiPickersClockPointer-thumb {
+  border: 14px solid #fdde00 !important;
+}
+
+.MuiButton-containedPrimary.Mui-disabled {
+  background-color: #5a5a5a !important;
+  color: #a5a5a5 !important;
+}
+.MuiButton-containedSecondary.Mui-disabled {
+  background-color: #e6e6e6 !important;
+  color: #b3b3b3 !important;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #000;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.MuiTypography-root.MuiPickersToolbarText-toolbarTxt.MuiTypography-h3 {
+  font-size: 30px !important;
 }
