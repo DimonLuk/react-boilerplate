@@ -273,7 +273,7 @@ const ProductItem = (props) => {
       {confirmLeaseDialogOpen && (
         <Dialog
           open={confirmLeaseDialogOpen}
-          onClose={() => confirmLeaseDialogOpen(false)}
+          onClose={() => setConfirmLeaseDialogOpen(false)}
         >
           <Paper>
             <Box
@@ -281,8 +281,6 @@ const ProductItem = (props) => {
               flexDirection="column"
               padding="50px 50px 50px 50px"
             >
-              <Typography variant="h5">Enter leasing dates</Typography>
-
               <Button
                 style={{ marginTop: "30px", background: "#fdde00" }}
                 onClick={() => {
