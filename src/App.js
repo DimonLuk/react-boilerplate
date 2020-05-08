@@ -60,6 +60,20 @@ const App = () => {
   const itm =
     currentItem ||
     (localStorage.currentItem && JSON.parse(localStorage.currentItem));
+  const getErrorAlertValues = () => {
+    return !error.response.body.detail ? (
+      Object.values(error.response.body).map((errorsArr) =>
+        errorsArr.map((error) => (
+          <Typography variant="body1" key={Math.random() * 100000}>
+            {error}
+          </Typography>
+        ))
+      )
+    ) : (
+      <Typography variant="body1">{error.response.body.detail}</Typography>
+    );
+  };
+  const er = error && getErrorAlertValues();
 
   useEffect(() => {
     new ApiService().init().then(() => {
@@ -209,13 +223,7 @@ const App = () => {
                 }}
               >
                 <AlertTitle>{error.message}</AlertTitle>
-                {Object.values(error.response.body).map((errorsArr) =>
-                  errorsArr.map((error) => (
-                    <Typography variant="body1" key={Math.random() * 100000}>
-                      {error}
-                    </Typography>
-                  ))
-                )}
+                {er}
               </Alert>
             )}
           </Router>

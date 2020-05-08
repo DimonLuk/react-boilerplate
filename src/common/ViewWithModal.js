@@ -10,16 +10,11 @@ const ViewWithModal = (props) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "calc(100vh-72px)",
+        minHeight: "calc(100vh - 72px)",
         maxWidth: "calc(100vw - 72px)",
       }}
     >
-      <Grid
-        container
-        justify="center"
-        alignItems="center"
-        style={{ marginTop: "72px" }}
-      >
+      <Grid container justify="center" alignItems="center">
         <Grid item xs={4}>
           <Paper
             elevation={0}

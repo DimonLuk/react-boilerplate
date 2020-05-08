@@ -36,7 +36,7 @@ const calculateMaxDate = ({ wallet, startDate, rateType, price }) => {
   }
 
   const momentEndDate = moment(startDate);
-  momentEndDate.add((parseFloat(wallet) + 10000) / hourlyCost, "hours");
+  momentEndDate.add(parseFloat(wallet) / hourlyCost, "hours");
   return momentEndDate.toDate();
 };
 
@@ -129,6 +129,7 @@ const ProductItem = (props) => {
           }}
           variant="contained"
           style={{ background: "#fdee00", color: "black" }}
+          disabled={parseFloat(user.wallet) < parseFloat(price)}
         >
           Lease
         </Button>

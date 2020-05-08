@@ -85,7 +85,10 @@
 .MuiPickersClockPointer-thumb {
   border: 14px solid #fdde00 !important;
 }
-
+.MuiButton-contained.Mui-disabled {
+  background-color: #fdde0080 !important;
+  color: #a5a5a5 !important;
+}
 .MuiButton-containedPrimary.Mui-disabled {
   background-color: #5a5a5a !important;
   color: #a5a5a5 !important;

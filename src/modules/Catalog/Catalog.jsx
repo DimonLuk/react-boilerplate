@@ -117,10 +117,14 @@ const Catalog = (props) => {
     filtered = filtered.filter((item) => {
       var itemValues = Object.values(item);
       let isIncluded = false;
+
       itemValues.forEach((itemValue) => {
         if (
           itemValue &&
-          itemValue.toString().includes(searchedText.toLowerCase())
+          itemValue
+            .toString()
+            .toLowerCase()
+            .includes(searchedText.toLowerCase())
         ) {
           isIncluded = true;
         }
