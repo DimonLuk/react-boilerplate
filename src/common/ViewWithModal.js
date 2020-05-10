@@ -45,7 +45,7 @@ const ViewWithModal = (props) => {
               minWidth: "400px",
               textAlign: "left",
               padding: "50px",
-              background: "#fdde00",
+              background: "rgb(126, 255, 161)",
             }}
           >
             {props.children}

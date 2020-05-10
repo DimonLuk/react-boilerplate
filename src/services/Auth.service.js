@@ -8,10 +8,8 @@ class AuthService {
       })
       .then((loginResponse) => {
         window.client.authorizations.Bearer = `Bearer ${loginResponse.body.token}`;
-        localStorage.DEEMA_TOKEN = loginResponse.body.token;
-        return UserService.getWallet().then((walletResponse) => {
-          return { ...walletResponse.body, ...loginResponse.body };
-        });
+        localStorage.RT_TOKEN = loginResponse.body.token;
+        return loginResponse.body;
       });
   };
 
@@ -29,10 +27,8 @@ class AuthService {
 
       .then((loginResponse) => {
         window.client.authorizations.Bearer = `Bearer ${loginResponse.body.token}`;
-        localStorage.DEEMA_TOKEN = loginResponse.body.token;
-        return UserService.getWallet().then((walletResponse) => {
-          return { ...walletResponse.body, ...loginResponse.body };
-        });
+        localStorage.RT_TOKEN = loginResponse.body.token;
+        return loginResponse.body;
       });
   };
 
@@ -41,7 +37,7 @@ class AuthService {
       ["rest_auth_logout_create"]()
       .finally(() => {
         window.client.authorizations = {};
-        localStorage.removeItem("DEEMA_TOKEN");
+        localStorage.removeItem("RT_TOKEN");
         localStorage.removeItem("user");
       });
   };

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import ViewWithModal from "../../../common/ViewWithModal";
-import { REGISTRATION } from "../../../routes";
+import { REGISTRATION, QUIZES } from "../../../routes";
 import AuthService from "../../../services/Auth.service";
 import { ApplicationContext } from "../../../App";
 
@@ -63,15 +63,13 @@ const SignIn = (props) => {
                 setUser({
                   username: value.user.username,
                   email: value.user.email,
-                  wallet: value.balance,
                 });
                 localStorage.user = JSON.stringify({
                   username: value.user.username,
                   email: value.user.email,
-                  wallet: value.balance,
                 });
 
-                history.push("/catalog");
+                history.push(QUIZES);
               })
               .catch((value) => {
                 setError(value);
@@ -105,7 +103,7 @@ const SignIn = (props) => {
               margin: "0px 0px 10px",
               height: "50px",
               background: "white",
-              color: "black",
+              color: '#101010',
             }}
           >
             Sign In with Facebook
@@ -117,7 +115,7 @@ const SignIn = (props) => {
               margin: "10px 0px",
               height: "50px",
               background: "white",
-              color: "black",
+              color: '#101010',
             }}
           >
             Sign In with Google

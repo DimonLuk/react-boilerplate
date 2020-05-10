@@ -19,6 +19,7 @@ import ApiService from "./services/Api.service";
 import AuthService from "./services/Auth.service";
 import Alert from "@material-ui/lab/Alert";
 import AlertTitle from "@material-ui/lab/AlertTitle";
+import QuizService from "./services/Quiz.service";
 
 if (process.env.REACT_APP_SENTRY_URL) {
   Sentry.init({ dsn: process.env.REACT_APP_SENTRY_URL });
@@ -27,7 +28,7 @@ const theme = createMuiTheme({
   palette: {
     primary: grey,
     secondary: {
-      main: "#fdde00",
+      main: "rgb(126, 255, 161)",
     },
   },
 });
@@ -35,12 +36,10 @@ export const ApplicationContext = React.createContext({});
 
 const App = () => {
   const [user, setUser] = useState("");
-  const [currentItem, setCurrentItem] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
+  const [currentQuiz, setCurrentQuiz] = useState(false);
   const [loadingClient, setLoadingClient] = useState(true);
-
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -57,9 +56,10 @@ const App = () => {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
   const usr = user || (localStorage.user && JSON.parse(localStorage.user));
-  const itm =
-    currentItem ||
-    (localStorage.currentItem && JSON.parse(localStorage.currentItem));
+  const curQuiz =
+    currentQuiz ||
+    (localStorage.currentQuiz && JSON.parse(localStorage.currentQuiz));
+
   const getErrorAlertValues = () => {
     return !error.response.body.detail ? (
       Object.values(error.response.body).map((errorsArr) =>
@@ -90,10 +90,6 @@ const App = () => {
           user: usr,
           setUser,
         },
-        currentItemState: {
-          currentItem: itm,
-          setCurrentItem,
-        },
         loadingState: {
           loading,
           setLoading,
@@ -101,6 +97,10 @@ const App = () => {
         errorState: {
           error,
           setError,
+        },
+        currentQuizState: {
+          currentQuiz: curQuiz,
+          setCurrentQuiz,
         },
       }}
     >
@@ -136,7 +136,9 @@ const App = () => {
             <Box
               display="flex"
               boxShadow="0 5px 10px #f1f1f1"
-              style={{ padding: "20px 50px" }}
+              style={{
+                padding: "20px 50px",
+              }}
               justifyContent="space-between"
             >
               <Typography variant="h5">
@@ -145,16 +147,6 @@ const App = () => {
               {usr && (
                 <>
                   <Box display="flex">
-                    {usr.wallet && (
-                      <Typography
-                        variant="body1"
-                        className="slim-h5"
-                        style={{ marginRight: "30px" }}
-                      >
-                        Wallet: ${usr.wallet}
-                      </Typography>
-                    )}
-
                     <Typography variant="h5" onClick={handleClick}>
                       {usr.username}
                     </Typography>
@@ -173,7 +165,12 @@ const App = () => {
                       horizontal: "center",
                     }}
                   >
-                    <Paper style={{ width: "100px", padding: "10px" }}>
+                    <Paper
+                      style={{
+                        width: "100px",
+                        padding: "10px",
+                      }}
+                    >
                       <Link
                         to="/"
                         onClick={() => {

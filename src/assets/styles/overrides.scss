@@ -58,7 +58,7 @@
 .MuiLinearProgress-colorPrimary {
   color: "red";
   fill: "red";
-  background-color: #fdde00;
+  background-color: rgb(126, 255, 161);
 }
 
 .MuiChip-label {
@@ -68,25 +68,25 @@
   max-width: 800px !important;
 }
 .MuiLinearProgress-barColorPrimary {
-  background-color: #fdde00 !important;
+  background-color: rgb(126, 255, 161) !important;
 }
 .MuiAlert-filledError {
   background-color: #ff110080 !important;
 }
 .MuiPickersToolbar-toolbar {
-  background-color: #fdde00 !important;
+  background-color: rgb(126, 255, 161) !important;
 }
 .MuiPickersDay-daySelected {
-  background-color: #fdde00 !important;
+  background-color: rgb(126, 255, 161) !important;
 }
 .MuiPickerDTTabs-tabs {
-  background-color: #fdde00 !important;
+  background-color: rgb(126, 255, 161) !important;
 }
 .MuiPickersClockPointer-thumb {
-  border: 14px solid #fdde00 !important;
+  border: 14px solid rgb(126, 255, 161) !important;
 }
 .MuiButton-contained.Mui-disabled {
-  background-color: #fdde0080 !important;
+  background-color: rgb(126, 255, 161) !important;
   color: #a5a5a5 !important;
 }
 .MuiButton-containedPrimary.Mui-disabled {

@@ -1,6 +1,7 @@
 import SignIn from "./modules/Auth/SignIn";
 import Register from "./modules/Auth/Register";
-import Catalog from "./modules/Catalog/Catalog";
+import Quizes from "./modules/Quizes/Quizes";
+import QuizForm from "./modules/Quizes/Quiz/QuizForm/QuizForm";
 
 export const REST_AUTH = `/rest-auth`;
 export const PASSWORD = `/password`;
@@ -8,7 +9,7 @@ export const RESET = `/reset`;
 export const REGISTRATION = `/registration`;
 export const LOGIN = `/login`;
 export const LOGOUT = "/logout";
-export const CATALOG = "/catalog";
+export const QUIZES = "/quizes";
 
 export const CLIENT_ROUTES = [
   {
@@ -21,10 +22,14 @@ export const CLIENT_ROUTES = [
     component: Register,
     exact: true,
   },
-
   {
-    route: CATALOG,
-    component: Catalog,
+    route: QUIZES,
+    component: Quizes,
+    exact: true,
+  },
+  {
+    route: `${QUIZES}/:id`,
+    component: QuizForm,
     exact: true,
   },
 

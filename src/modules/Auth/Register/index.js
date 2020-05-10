@@ -4,7 +4,7 @@ import React, { useContext, useState } from "react";
 import { Link, useHistory, withRouter } from "react-router-dom";
 import { ApplicationContext } from "../../../App";
 import ViewWithModal from "../../../common/ViewWithModal";
-import { LOGIN } from "../../../routes";
+import { LOGIN, QUIZES } from "../../../routes";
 import AuthService from "../../../services/Auth.service";
 
 const Register = (props) => {
@@ -66,14 +66,12 @@ const Register = (props) => {
                 setUser({
                   username: value.user.username,
                   email: value.user.email,
-                  wallet: value.balance,
                 });
                 localStorage.user = JSON.stringify({
                   username: value.user.username,
                   email: value.user.email,
-                  wallet: value.balance,
                 });
-                history.push("/catalog");
+                history.push(QUIZES);
               })
               .catch((value) => {
                 setError(value);
@@ -109,7 +107,7 @@ const Register = (props) => {
               margin: "0px 0px 10px",
               height: "50px",
               background: "white",
-              color: "black",
+              color: '#101010',
             }}
             disabled={loading}
           >
@@ -122,7 +120,7 @@ const Register = (props) => {
               margin: "10px 0px",
               height: "50px",
               background: "white",
-              color: "black",
+              color: '#101010',
             }}
             disabled={loading}
           >
