@@ -19,7 +19,6 @@ import ApiService from "./services/Api.service";
 import AuthService from "./services/Auth.service";
 import Alert from "@material-ui/lab/Alert";
 import AlertTitle from "@material-ui/lab/AlertTitle";
-import QuizService from "./services/Quiz.service";
 
 if (process.env.REACT_APP_SENTRY_URL) {
   Sentry.init({ dsn: process.env.REACT_APP_SENTRY_URL });

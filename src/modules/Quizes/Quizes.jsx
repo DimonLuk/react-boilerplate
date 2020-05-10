@@ -1,11 +1,4 @@
-import {
-  Box,
-  Chip,
-  Grid,
-  TextField,
-  Typography,
-  Button,
-} from "@material-ui/core";
+import { Box, Grid, TextField, Typography } from "@material-ui/core";
 import Skeleton from "@material-ui/lab/Skeleton";
 
 import React from "react";
@@ -77,6 +70,9 @@ const Quizes = (props) => {
       try {
         setLoading(true);
         const response = await QuizService.getQuizes();
+        if (!response.body.items.length && localStorage.currentQuiz) {
+          response.body.items.push(JSON.parse(localStorage.currentQuiz));
+        }
         setQuizes(response.body.items || []);
       } catch (e) {
         setError(e);

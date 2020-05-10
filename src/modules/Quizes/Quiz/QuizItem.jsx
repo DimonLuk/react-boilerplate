@@ -9,10 +9,10 @@ import { QUIZES } from "../../../routes";
 const QuizItem = (props) => {
   const { end_time, start_time, title, id } = props;
 
-  const { userState, loadingState, errorState, currentQuizState } = useContext(
+  const { loadingState, errorState, currentQuizState } = useContext(
     ApplicationContext
   );
-  const { user } = userState;
+
   const { setLoading } = loadingState;
   const { setError } = errorState;
   const { setCurrentQuiz } = currentQuizState;

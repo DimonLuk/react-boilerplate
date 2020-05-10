@@ -1,5 +1,3 @@
-import UserService from "./User.service";
-
 class AuthService {
   register = (userData) => {
     return window.client.apis["rest-auth"]

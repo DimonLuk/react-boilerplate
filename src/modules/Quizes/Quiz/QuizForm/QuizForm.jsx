@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, Box, Typography, Dialog } from "@material-ui/core";
 import QuizService from "../../../../services/Quiz.service";
 import Question from "../Question/Question";
-import { useEffect } from "react";
 import { useContext } from "react";
 import { ApplicationContext } from "../../../../App";
 import { QUIZES } from "../../../../routes";
@@ -23,28 +22,26 @@ import { useHistory, withRouter } from "react-router-dom";
 // is_ticked*	boolean
 
 const QuizForm = (props) => {
-  const { currentQuizState, loadingState, errorState } = useContext(
-    ApplicationContext
-  );
-  const { currentQuiz } = currentQuizState;
-  const history = useHistory();
+  const { currentQuizState, loadingState } = useContext(ApplicationContext);
+  const currentQuiz = currentQuizState.currentQuiz || {};
   const [showResultsModal, setShowResultsModal] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-
-  const [questionsSnapshot, setQuestionsSnapshot] = useState([]);
-  if (!currentQuiz) {
-    history.push(QUIZES);
-    return null;
-  }
-  const { setLoading } = loadingState;
-  const { setError } = errorState;
   const { questions, title, quiz_token, id } = currentQuiz;
+
+  const [questionsSnapshot, setQuestionsSnapshot] = useState(questions || []);
+
+  const { setLoading } = loadingState;
 
   var a = (q) => {
     return q.answers.filter((a) => {
       return a.is_ticked;
     }).length;
   };
+  const history = useHistory();
+  if (!currentQuiz.questions) {
+    history.push(QUIZES);
+    return null;
+  }
   return (
     <Box margin="50px">
       <Typography variant="h3">{title}</Typography>
